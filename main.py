@@ -8,6 +8,8 @@ import time
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.presences = True
+intents.members = True
 
 load_dotenv()
 
@@ -71,7 +73,7 @@ async def on_application_command_error(ctx: commands.Context, error: commands.Co
   await print_error(f"application command error: {error}")
 
 async def print_error(error_string: str):
-  logbook_channel = await bot.fetch_channel(22222222222222222222)
+  logbook_channel = await bot.fetch_channel(1517697376461000807)
   
   if len(error_string) <= 3900:
     embed = discord.Embed(title="Error Log", description=f'```{error_string}```', color=4491263)
@@ -100,7 +102,7 @@ async def print_error(error_string: str):
 async def on_ready():
   print('\n\n************************ READY ************************\n\n')
 
-  settings_channel = await bot.fetch_channel(22222222222222222222)
+  settings_channel = await bot.fetch_channel(1517697376461000807)
   
   embed = discord.Embed(title='Alive!', color=4776171, description=f"""
 Awake! My prefix is `{bot.command_prefix}` 
